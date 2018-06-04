@@ -11,7 +11,6 @@ function submit(){
     const thirdHeader = document.querySelectorAll("h1")[2];
     const typedText = document.querySelector("input").value;
     thirdHeader.textContent = typedText;
-
 }
 
 button.addEventListener("click", changeText);
@@ -19,6 +18,6 @@ submitButton.addEventListener("click", submit);
 
 inputField.addEventListener("keyup", function(event){
     if(event.keyCode === 13){
-        document.querySelectorAll("h1")[2].textContent = document.querySelector("input").value;
+        submitButton.click();
     }
 })
