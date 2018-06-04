@@ -4,3 +4,19 @@ body{
     background-size: 100%;
     text-align: center;
 }
+
+h1{
+    color:white;
+    font-size: 40px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-shadow:
+		-1px -1px 0 #000,
+		1px -1px 0 #000,
+		-1px 1px 0 #000,
+		1px 1px 0 #000;   
+}
+
+button:hover{
+    background-image: url("images/rainbow.gif")
+}
+

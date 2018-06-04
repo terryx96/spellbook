@@ -4,7 +4,10 @@ const inputField = document.querySelector("input");
 
 function changeText(){
     const header = document.querySelectorAll("h1");
-    header[1].textContent = "Not Spellbook";
+    if(header[1].textContent == "Spellbook")
+        header[1].textContent = "Not Spellbook";
+    else 
+        header[1].textContent = "Spellbook";
 }
 
 function submit(){
@@ -12,6 +15,9 @@ function submit(){
     const typedText = document.querySelector("input").value;
     thirdHeader.textContent = typedText;
 }
+
+
+
 
 button.addEventListener("click", changeText);
 submitButton.addEventListener("click", submit);
