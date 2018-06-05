@@ -34,3 +34,11 @@ function formSubmit(){
 }
 
 formButton.addEventListener("click", formSubmit);
+formText.addEventListener("keyup", function(event){
+    event.preventDefault();
+    if(event.keyCode == 13){
+        formButton.click();
+    }
+})
+
+
