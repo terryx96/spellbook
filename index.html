@@ -9,26 +9,26 @@
 </head>
 <body>
     <h1>Spellbook</h1>
-    <h1>Spellbook</h1>
-    <h1>Spellbook</h1>
-    <h1>Spellbook</h1>
-
-    <input type = "text"></input>
-    <button id = "submitButton">Submit</button>
-    <br/>
-    <br/>
-    <button id = "change">Change Text</button>
-    <br/>
-    <br/>
-
+   
     <!--onsubmit = "return false" stops the page from refreshing on submit-->
-    <form onsubmit="return false">
-        <input type = "text" id = "formInput"></input>
-        <input type = "button" id = "formButton" value = "Submit Form"></input>
+    <form>
+        <input 
+            type = "text" 
+            id = "formInput" 
+            name = "spellName" 
+            placeholder="enter a spellname"
+            autofocus>
+        <button 
+            type = "submit" 
+            id = "change" >
+            Submit
+        </button>
     </form>
 
-    
 
+    <ul id="spells">
+
+    </ul>
     <script src="index.js"></script>
 </body>
 </html>
