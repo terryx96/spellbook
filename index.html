@@ -8,10 +8,14 @@
     <link rel="stylesheet" type="text/css" media="screen" href="index.css" />
 </head>
 <body>
+
+    <img src = "images/skull.jpg" alt = "" id = "skull">
+    <img src = "images/quill.jpg" ald = "" id = "quill">
     <h1>Spellbook</h1>
    
     <!--onsubmit = "return false" stops the page from refreshing on submit-->
     <form>
+        <div>
         <input 
             type = "text" 
             id = "formInput" 
@@ -23,12 +27,15 @@
             id = "change" >
             Submit
         </button>
+        </div>
     </form>
 
 
+    <main>
     <ul id="spells">
-
     </ul>
+    </main>
+
     <script src="index.js"></script>
 </body>
 </html>
