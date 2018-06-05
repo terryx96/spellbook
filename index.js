@@ -25,3 +25,12 @@ inputField.addEventListener("keyup", function(event){
         submitButton.click();
     }
 })
+
+const formText = document.querySelector("#formInput");
+const formButton = document.querySelector("#formButton");
+function formSubmit(){
+    const firstHeader = document.querySelectorAll("h1")[0];
+    firstHeader.textContent = formText.value;
+}
+
+formButton.addEventListener("click", formSubmit);
