@@ -21,7 +21,7 @@ button.addEventListener("click", changeText);
 submitButton.addEventListener("click", submit);
 
 inputField.addEventListener("keyup", function(event){
-    if(event.keyCode === 13){
+    if(event.keyCode == 13){
         submitButton.click();
     }
 })

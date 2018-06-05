@@ -1,9 +1,11 @@
 body{
-    background-image:url("images/background.jpg");
+    background-image:url("images/cat.jpg");
     background-repeat: no-repeat;
     background-size: 100%;
     text-align: center;
 }
+
+
 
 h1{
     color:white;
