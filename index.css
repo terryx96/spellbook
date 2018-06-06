@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans%7CHomemade+Apple%7CUnifrakturCook:700');
-
+@import url('https://fonts.googleapis.com/css?family=Courgette|Gloria+Hallelujah');
 body {
   background: url(images/background.jpg);
   background-size: cover;
@@ -141,8 +141,91 @@ ul#spells {
 
 #name{
     color:red;
+    font-family: 'Gloria Hallelujah', cursive;
 }
 
 #desc{
     color:blue;
+    font-family: 'Courgette', cursive;
 }
+
+#brown{
+    color: brown;
+    font-family: sans-serif;
+}
+
+#purple{
+    color: purple;
+    font-family: sans-serif;
+}
+
+#blue{
+    color: rgb(72, 169, 207);
+    font-family: sans-serif;
+}
+
+#yellow{
+    color: rgb(238, 255, 0);
+    font-family: sans-serif;
+}
+
+#rainbow{
+    font-family: sans-serif;
+    -webkit-animation: colorchange 5s infinite ease;
+}
+
+@-webkit-keyframes colorchange {
+    0% {
+      
+      color: red;
+    }
+    
+    10% {
+      
+      color: orangered;
+    }
+    
+    20% {
+      
+      color: orange;
+    }
+    
+    30% {
+      
+      color: yellow;
+    }
+    
+    40% {
+      
+      color: yellowgreen;
+    }
+    
+    50% {
+      
+      color: green;
+    }
+    
+    60% {
+      
+      color: rgb(0, 255, 200);
+    }
+    
+    70% {
+      
+      color: #4aa7e6;
+    }
+    80% {
+   
+      color: blue;
+    }
+    
+    90% {
+   
+      color: blueviolet;
+    }
+    
+    100% {
+      
+      color: purple;
+    }
+  }
