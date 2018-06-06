@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans%7CHomemade+Apple%7CUnifrakturCook:700');
 @import url('https://fonts.googleapis.com/css?family=Courgette|Gloria+Hallelujah');
+@import url('https://fonts.googleapis.com/css?family=Indie+Flower');
+
 body {
   background: url(images/background.jpg);
   background-size: cover;
@@ -26,11 +28,11 @@ img#quill {
 }
 
 h1 {
-  font-family: UnifrakturCook, serif;
+  font-family: 'Indie Flower', cursive;
   margin-left: 10vw;
   margin-top: 5vw;
   margin-bottom: 3vw;
-  color: rgba(0, 0, 0, 0.7);
+  color: rgba(26, 22, 22, 0.795);
   font-size: 8vw;
 }
 
@@ -145,7 +147,8 @@ ul#spells {
 }
 
 #desc{
-    color:blue;
+    font-size: 12;
+    color:rgb(253, 55, 55);
     font-family: 'Courgette', cursive;
 }
 
@@ -171,7 +174,7 @@ ul#spells {
 
 #rainbow{
     font-family: sans-serif;
-    -webkit-animation: colorchange 5s infinite ease;
+    -webkit-animation: colorchange 3s infinite ease;
 }
 
 @-webkit-keyframes colorchange {
