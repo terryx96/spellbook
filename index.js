@@ -1,24 +1,35 @@
-const button = document.querySelector('form')
-const submitButton = document.querySelector("#submitButton");
-const inputField = document.querySelector("input");
+const form = document.querySelector('form')
+const desc = document.querySelector("#description")
 
-function changeText(){
-        const header = document.querySelectorAll("h1");
-        (header[1].textContent == "Spellbook") ?
-            header[1].textContent = "Not Spellbook" : 
-            header[1].textContent = "Spellbook";
+const changeHeading = function(ev) {
+  ev.preventDefault()
+
+  const f = ev.target
+  const spellName = f.spellName.value;
+  const spellDesc = desc.value;
+  const spellsDiv = document.querySelector('#spells')
+  const node = document.createElement("LI");
+  const spanName = document.createElement("span")
+  const spanDesc = document.createElement("span");
+  spanName.id = "name";
+  spanDesc.id = "desc"
+  spanName.textContent = `${spellName}:`
+  spanDesc.textContent = `${spellDesc}`
+  node.appendChild(spanName)
+  node.appendChild(spanDesc)
+  spellsDiv.appendChild(node)
+
+
+  f.reset()
 }
 
-function submit(ev){
-    ev.preventDefault();
-    const thirdHeader = document.querySelector("#spells");
-    let typedText = document.querySelector("input").value;
-    thirdHeader.innerHTML += `<li>${typedText}</li>`
-    typedText.value = "";
-    button.reset();
-}
+form.addEventListener('submit', changeHeading)
 
-button.addEventListener("submit", submit)
+
+
+//adding a label to a list: label tag <label for="">NAME</label>
+//put the input tag inside the label tag
+//html5 attribute: placeholder
 
 //literals are bare values, so 4 or "hello"
 
