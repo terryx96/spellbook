@@ -141,9 +141,15 @@ ul#spells {
   margin-top: -1rem;
 }
 
+.inline{
+   display: flex;
+   justify-content: space-around;
+   text-overflow: ellipsis;
+}
+
 #name{
     color:red;
-    font-family: 'Gloria Hallelujah', cursive;
+    font-family: 'Courgette', cursive;
 }
 
 #desc{
