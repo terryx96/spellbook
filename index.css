@@ -166,12 +166,12 @@ ul#spells {
    text-overflow: ellipsis;
 }
 
-#name{
+.name{
     color:red;
     font-family: 'Courgette', cursive;
 }
 
-#desc{
+.desc{
     font-size: 12;
     color:rgb(253, 55, 55);
     font-family: 'Courgette', cursive;

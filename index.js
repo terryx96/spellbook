@@ -1,76 +1,51 @@
-
-
 const app = {
-    spellArr: [],
     
     init: function(){
+        this.spellArr = [];
+
         const form = document.querySelector('form')
         form.addEventListener('submit', (ev) => {
-            ev.preventDefault();
             this.addSpell(ev);
-            console.log(this.spellArr);
-            
         })},
 
-    addSpell: function(ev) {
+    addSpell: function(ev){
         ev.preventDefault();
+        const spellsList = document.querySelector("ul#spells");
+        console.log(spellsList)
         const f = ev.target;
-        const spellsDiv = document.querySelector('#spells');
-        const node = this.createLi(f.spellName.value, f.spellDescription.value, f.level.value);
         const spell = {
             name: f.spellName.value,
-            description: f.spellDescription.value,
-            spellLevel: f.level.value,
+            desc: f.spellDescription.value,
+            level: f.level.value,
         }
         this.spellArr.push(spell);
-        spellsDiv.appendChild(node);
-        f.reset()
-      },
+        
+        const item = this.createItem(spell);
+        spellsList.appendChild(item)
 
-    createLi: function(spellName, spellDesc, level){
+        f.reset();
+        },
+
+    createItem: function(spell){
         const node = document.createElement("li");
-        node.classList.add("inline")
-        node.appendChild(this.createSpan(`${spellName}: `, "name"));
-        node.appendChild(this.createSpan(`${spellDesc}`, "desc"));
-        node.appendChild(this.createSpan(`Level ${level}`, this.determineLevel(level)));
-        node.appendChild(this.deleteButton());
+        node.classList.add("spell");
+        const attributes = Object.keys(spell);
+            attributes.forEach(att => {
+                node.appendChild(this.createSpan(att, spell[att]));
+            })
         return node;
-    },
-
-    createSpan: function(value, id){
-        const span = document.createElement("span");
-        span.setAttribute("id", id);
-        span.textContent = value;
-        return span;
-    },
-
-    determineLevel: function(level){
-        let id = "";
-        switch(level){
-            case "0": id = "brown"; break;
-            case "1": id = "purple"; break;
-            case "2": id = "blue"; break;
-            case "3": id = "yellow"; break;
-            default: id = "rainbow"; break;
-        }
-        return id;
-    },
-
-    deleteButton: () => {
-        const del = document.createElement("input");
-        del.setAttribute("type", "submit");
-        del.setAttribute("value", "Delete");
-        del.onclick = function(){
-            del.parentNode.remove();
-            app.spellArr.splice(app.spellArr.indexOf(del.parentNode), 1);
-        }
-        return del;
+        },
+    
+    createSpan: function(id, value){
+        const spanNode = document.createElement("span");
+        spanNode.classList.add(id);
+        spanNode.textContent = value;
+        return spanNode;
     }
+
+    
 }
 
  
 app.init();
-
-
-
 
