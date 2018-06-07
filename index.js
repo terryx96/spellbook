@@ -61,8 +61,6 @@ const app = {
         del.setAttribute("value", "Delete");
         del.onclick = function(){
            del.parentNode.parentNode.removeChild(del.parentNode)
-           app.spellArr.splice(app.spellArr.indexOf(del.parentNode), 1);
-            
         }
         return del;
     }
