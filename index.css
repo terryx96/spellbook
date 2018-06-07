@@ -1,9 +1,11 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans%7CHomemade+Apple%7CUnifrakturCook:700');
 @import url('https://fonts.googleapis.com/css?family=Courgette|Gloria+Hallelujah');
 @import url('https://fonts.googleapis.com/css?family=Indie+Flower');
+@import url('https://fonts.googleapis.com/css?family=Press+Start+2P');
+
 
 body {
-  background: url(images/background.jpg);
+  background: url(images/background.gif);
   background-size: cover;
   background-attachment: fixed;
   background-repeat: no-repeat;
@@ -15,16 +17,28 @@ body {
 img#skull {
   position: absolute;
   right: 5vw;
-  top: 5vw;
-  transform: rotate(15deg);
+  top: 15vw;
+  transform: rotate(45deg);
   width: 25vw;
+  
+    position: absolute;
+  
+    margin:-60px 0 0 -60px;
+    -webkit-animation:spin 4s linear infinite;
+    -moz-animation:spin 4s linear infinite;
+    animation:spin 4s linear infinite;
 }
+@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+
 
 img#quill {
   position: absolute;
-  top: calc(30vw + 40px);
-  right: 3vw;
+  top: calc(2vw);
+  right: 38vw;
   width: 20vw;
+  motion-rotation: reverse;
 }
 
 h1 {
@@ -34,6 +48,11 @@ h1 {
   margin-bottom: 3vw;
   color: rgba(26, 22, 22, 0.795);
   font-size: 8vw;
+  text-shadow:
+		-1px -1px 0 white,
+		1px -1px 0 white,
+		-1px 1px 0 white,
+		1px 1px 0 white;
 }
 
 form {
@@ -119,7 +138,7 @@ main {
   background-image: url(images/parch.jpeg);
   background-size: cover;
   background-repeat: no-repeat;
-  width: 50vw;
+  width: 60vw;
   margin-left: 10vw;
   height: calc(100vh - 18.5vw - 4rem);
   /*if it flows outside of height add scroll bars*/

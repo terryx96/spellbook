@@ -9,6 +9,7 @@ const app = {
             ev.preventDefault();
             this.addSpell(ev);
             console.log(this.spellArr);
+            
         })},
 
     addSpell: function(ev) {
@@ -60,14 +61,14 @@ const app = {
         del.setAttribute("type", "submit");
         del.setAttribute("value", "Delete");
         del.onclick = function(){
-           del.parentNode.parentNode.removeChild(del.parentNode)
+            del.parentNode.remove();
+            app.spellArr.splice(app.spellArr.indexOf(del.parentNode), 1);
         }
         return del;
     }
 }
 
-
-
+ 
 app.init();
 
 
