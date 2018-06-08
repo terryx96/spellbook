@@ -3,16 +3,13 @@ class App {
         this.spellArr = [];
         this.page = document.querySelector("#spells");
         const form = document.querySelector('form');
-        
-        form.addEventListener('submit', (ev) => {
-            this.addSpell(ev);
-        })
-        }
+        this.load();
+        form.addEventListener('submit', ev => {
+            this.onSubmit(ev);
+        })}
 
-    addSpell(ev){
+    onSubmit(ev){
         ev.preventDefault();
-        const spellsList = document.querySelector("ul#spells");
-        console.log(spellsList)
         const f = ev.target;
         const spell = {
             name: f.spellName.value,
@@ -20,12 +17,17 @@ class App {
             level: f.level.value,
             favorite: false,
         }
+        this.addSpell(spell);
+        f.reset();
+    }
+
+    addSpell(spell){
+        const spellsList = document.querySelector("ul#spells");
         this.spellArr.push(spell);
-        
         const item = this.createItem(spell);
         spellsList.appendChild(item)
         this.save();
-        f.reset();
+       
         }
 
     createItem(spell){
@@ -138,9 +140,8 @@ class App {
     load(){
         const stored = localStorage.getItem("spells")
         const arr = JSON.parse(stored);
-        if(arr){
-            arr.forEach(this.addSpell.bind(this))
-        }
+        console.log(arr)
+        arr.forEach(this.addSpell.bind(this));
     }
 }
 
