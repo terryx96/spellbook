@@ -35,6 +35,7 @@ const app = {
             })
         node.appendChild(this.deleteButton(spell));
         node.appendChild(this.upButton(spell));
+        node.appendChild(this.downButton(spell))
         return node;
         },
     
@@ -86,10 +87,20 @@ const app = {
         const down = document.createElement("button");
         down.textContent = "Down";
         down.addEventListener("click", this.moveDown.bind(this, spell));
+        return down;
     },
 
     moveDown: function(spell, ev){
-        
+        const f = ev.target;
+        const item = f.closest(".spell");
+
+        const i = this.spellArr.indexOf(spell)
+        if(i < this.spellArr.length-1){
+            const temp = this.spellArr[i+1];
+            this.spellArr[i+1] = this.spellArr[i]
+            this.spellArr[i] = temp;
+            this.page.insertBefore(item.nextSibling, item);
+        }
     }
 
     
