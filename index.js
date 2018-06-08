@@ -22,7 +22,7 @@ const app = {
         
         const item = this.createItem(spell);
         spellsList.appendChild(item)
-
+        console.log(this.spellArr)
         f.reset();
         },
 
@@ -33,6 +33,7 @@ const app = {
             attributes.forEach(att => {
                 node.appendChild(this.createSpan(att, spell[att]));
             })
+        node.appendChild(this.deleteButton(spell));
         return node;
         },
     
@@ -41,6 +42,24 @@ const app = {
         spanNode.classList.add(id);
         spanNode.textContent = value;
         return spanNode;
+    },
+
+    deleteButton: function(spell){
+        const del = document.createElement("button");
+        del.textContent = "Delete";
+        const i = this.spellArr.indexOf(spell);
+        //const item = del.closest(".spell");
+        del.addEventListener("click", this.deleteSpell.bind(this, spell));
+
+        return del;
+    },
+
+    deleteSpell: function(spell, ev){
+        const f = ev.target;
+        f.parentNode.remove();
+        const i = this.spellArr.indexOf(spell);
+        this.spellArr.splice(i, 1)
+
     }
 
     
