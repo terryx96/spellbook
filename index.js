@@ -17,6 +17,7 @@ const app = {
             name: f.spellName.value,
             desc: f.spellDescription.value,
             level: f.level.value,
+            favorite: false,
         }
         this.spellArr.push(spell);
         
@@ -31,11 +32,14 @@ const app = {
         node.classList.add("spell");
         const attributes = Object.keys(spell);
             attributes.forEach(att => {
+                if(att!="favorite"){
                 node.appendChild(this.createSpan(att, spell[att]));
+                }
             })
         node.appendChild(this.deleteButton(spell));
         node.appendChild(this.upButton(spell));
         node.appendChild(this.downButton(spell))
+        node.appendChild(this.faveButton(spell))
         return node;
         },
     
@@ -49,8 +53,8 @@ const app = {
     deleteButton: function(spell){
         const del = document.createElement("button");
         del.textContent = "Delete";
+        del.classList.add("delete")
         const i = this.spellArr.indexOf(spell);
-        //const item = del.closest(".spell");
         del.addEventListener("click", this.deleteSpell.bind(this, spell));
 
         return del;
@@ -66,6 +70,7 @@ const app = {
     upButton: function(spell){
         const up = document.createElement("button");
         up.textContent = "Up";
+        up.classList.add("move");
         up.addEventListener("click", this.moveUp.bind(this, spell));
         return up;
     },
@@ -86,6 +91,7 @@ const app = {
     downButton: function(spell){
         const down = document.createElement("button");
         down.textContent = "Down";
+        down.classList.add("move")
         down.addEventListener("click", this.moveDown.bind(this, spell));
         return down;
     },
@@ -101,7 +107,27 @@ const app = {
             this.spellArr[i] = temp;
             this.page.insertBefore(item.nextSibling, item);
         }
-    }
+    },
+
+    faveButton: function(spell){
+        const fave = document.createElement("button");
+        fave.textContent = "Fave";
+        fave.classList.add("fav");
+        fave.addEventListener("click", this.toggleFave.bind(this, spell));
+        return fave;
+    },
+
+    toggleFave: function(spell, ev){
+        const f = ev.target;
+        const item = f.closest(".spell");
+        spell.favorite = !spell.favorite;
+        if(spell.favorite){
+            item.classList.add("fave");
+        }
+        else{
+            item.classList.remove("fave");
+        }
+    },
 
     
 }

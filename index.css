@@ -14,9 +14,9 @@ body {
   font-family: "Open Sans", "Helvetica Neue", sans-serif;
 }
 
-img#skull {
+img#spin {
   position: absolute;
-  right: 5vw;
+  right: 6vw;
   top: 15vw;
   transform: rotate(45deg);
   width: 25vw;
@@ -33,7 +33,7 @@ img#skull {
 @keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
 
 
-img#quill {
+img#sit {
   position: absolute;
   top: calc(2vw);
   right: 38vw;
@@ -176,6 +176,15 @@ ul#spells {
     color:rgb(253, 55, 55);
     font-family: 'Courgette', cursive;
 }
+
+.fave{
+  background-color: goldenrod;
+}
+
+
+
+
+
 
 #brown{
     color: brown;
