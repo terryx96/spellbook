@@ -1,14 +1,15 @@
-const app = {
-    
-    init: function(){
+class App {
+    constructor(){
         this.spellArr = [];
-        this.page = document.querySelector("#spells")
-        const form = document.querySelector('form')
+        this.page = document.querySelector("#spells");
+        const form = document.querySelector('form');
+        
         form.addEventListener('submit', (ev) => {
             this.addSpell(ev);
-        })},
+        })
+        }
 
-    addSpell: function(ev){
+    addSpell(ev){
         ev.preventDefault();
         const spellsList = document.querySelector("ul#spells");
         console.log(spellsList)
@@ -23,11 +24,11 @@ const app = {
         
         const item = this.createItem(spell);
         spellsList.appendChild(item)
-        console.log(this.spellArr)
+        this.save();
         f.reset();
-        },
+        }
 
-    createItem: function(spell){
+    createItem(spell){
         const node = document.createElement("li");
         node.classList.add("spell");
         const attributes = Object.keys(spell);
@@ -41,16 +42,17 @@ const app = {
         node.appendChild(this.downButton(spell))
         node.appendChild(this.faveButton(spell))
         return node;
-        },
+        }
     
-    createSpan: function(id, value){
+    createSpan(id, value){
         const spanNode = document.createElement("span");
         spanNode.classList.add(id);
-        spanNode.textContent = value;
+        spanNode.contentEditable = true;
+        spanNode.textContent = `${value} `;
         return spanNode;
-    },
+    }
 
-    deleteButton: function(spell){
+    deleteButton(spell){
         const del = document.createElement("button");
         del.textContent = "Delete";
         del.classList.add("delete")
@@ -58,24 +60,24 @@ const app = {
         del.addEventListener("click", this.deleteSpell.bind(this, spell));
 
         return del;
-    },
+    }
 
-    deleteSpell: function(spell, ev){
+    deleteSpell(spell, ev){
         const f = ev.target;
         f.parentNode.remove();
         const i = this.spellArr.indexOf(spell);
         this.spellArr.splice(i, 1)
-    },
+    }
 
-    upButton: function(spell){
+    upButton(spell){
         const up = document.createElement("button");
         up.textContent = "Up";
         up.classList.add("move");
         up.addEventListener("click", this.moveUp.bind(this, spell));
         return up;
-    },
+    }
 
-    moveUp: function(spell, ev){
+    moveUp(spell, ev){
         const f = ev.target;
         const item = f.closest(".spell");
 
@@ -86,17 +88,17 @@ const app = {
             this.spellArr[i] = temp;
             this.page.insertBefore(item, item.previousSibling);
         }
-    },
+    }
 
-    downButton: function(spell){
+    downButton(spell){
         const down = document.createElement("button");
         down.textContent = "Down";
         down.classList.add("move")
         down.addEventListener("click", this.moveDown.bind(this, spell));
         return down;
-    },
+    }
 
-    moveDown: function(spell, ev){
+    moveDown(spell, ev){
         const f = ev.target;
         const item = f.closest(".spell");
 
@@ -107,17 +109,17 @@ const app = {
             this.spellArr[i] = temp;
             this.page.insertBefore(item.nextSibling, item);
         }
-    },
+    }
 
-    faveButton: function(spell){
+    faveButton(spell){
         const fave = document.createElement("button");
         fave.textContent = "Fave";
         fave.classList.add("fav");
         fave.addEventListener("click", this.toggleFave.bind(this, spell));
         return fave;
-    },
+    }
 
-    toggleFave: function(spell, ev){
+    toggleFave(spell, ev){
         const f = ev.target;
         const item = f.closest(".spell");
         spell.favorite = !spell.favorite;
@@ -127,11 +129,21 @@ const app = {
         else{
             item.classList.remove("fave");
         }
-    },
+    }
 
-    
+    save(){
+        localStorage.setItem("spells", JSON.stringify(this.spellArr));
+    }
+
+    load(){
+        const stored = localStorage.getItem("spells")
+        const arr = JSON.parse(stored);
+        if(arr){
+            arr.forEach(this.addSpell.bind(this))
+        }
+    }
 }
 
- 
-app.init();
+const app = new App()
+
 
