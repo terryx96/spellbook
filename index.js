@@ -2,7 +2,7 @@ const app = {
     
     init: function(){
         this.spellArr = [];
-
+        this.page = document.querySelector("#spells")
         const form = document.querySelector('form')
         form.addEventListener('submit', (ev) => {
             this.addSpell(ev);
@@ -34,6 +34,7 @@ const app = {
                 node.appendChild(this.createSpan(att, spell[att]));
             })
         node.appendChild(this.deleteButton(spell));
+        node.appendChild(this.upButton(spell));
         return node;
         },
     
@@ -59,7 +60,36 @@ const app = {
         f.parentNode.remove();
         const i = this.spellArr.indexOf(spell);
         this.spellArr.splice(i, 1)
+    },
 
+    upButton: function(spell){
+        const up = document.createElement("button");
+        up.textContent = "Up";
+        up.addEventListener("click", this.moveUp.bind(this, spell));
+        return up;
+    },
+
+    moveUp: function(spell, ev){
+        const f = ev.target;
+        const item = f.closest(".spell");
+
+        const i = this.spellArr.indexOf(spell)
+        if(i > 0){
+            const temp = this.spellArr[i-1];
+            this.spellArr[i-1] = this.spellArr[i]
+            this.spellArr[i] = temp;
+            this.page.insertBefore(item, item.previousSibling);
+        }
+    },
+
+    downButton: function(spell){
+        const down = document.createElement("button");
+        down.textContent = "Down";
+        down.addEventListener("click", this.moveDown.bind(this, spell));
+    },
+
+    moveDown: function(spell, ev){
+        
     }
 
     
